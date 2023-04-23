@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     private Transform inventoryContainer;
 
     [SerializeField]
-    private int selectedSlotIndex = 1;
+    private int selectedSlotIndex = 0;
 
     private void Start() {
         foreach (InventorySlot slot in GetSlots()) {
@@ -23,8 +23,8 @@ public class Inventory : MonoBehaviour
         foreach (InventorySlot slot in InventorySlots) {
             if (Input.GetKey(slot.SlotInput)) {
                 InventorySlots[selectedSlotIndex].SetActivity(false);
-                selectedSlotIndex = slot.ID;
-                slot.SetActivity(true);
+                selectedSlotIndex = slot.ID - 1;
+                InventorySlots[selectedSlotIndex].SetActivity(true);
             }
         }
     }
