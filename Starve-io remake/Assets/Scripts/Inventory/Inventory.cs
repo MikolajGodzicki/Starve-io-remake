@@ -26,6 +26,8 @@ public class Inventory : MonoBehaviour
                 selectedSlotIndex = slot.ID - 1;
                 InventorySlots[selectedSlotIndex].SetActivity(true);
             }
+
+            slot.UpdateSlot();
         }
     }
 
