@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 8.74, y: 9.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,12 +101,12 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.3623406, y: -2.061356}
-  - {x: -2.2801948, y: 0.5749566}
-  - {x: -0.011515833, y: 2.1765153}
-  - {x: 2.2541249, y: 0.56630224}
-  - {x: 1.402974, y: -2.032064}
-  - {x: -1.3669409, y: -2.038324}
+  - {x: -1.3013397, y: -1.8681866}
+  - {x: -2.2598612, y: 0.6969584}
+  - {x: -0.031849466, y: 2.2985172}
+  - {x: 2.1829572, y: 0.77980536}
+  - {x: 1.3724735, y: -1.8490615}
+  - {x: -1.295773, y: -1.8654883}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

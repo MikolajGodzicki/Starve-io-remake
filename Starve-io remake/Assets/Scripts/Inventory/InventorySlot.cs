@@ -9,7 +9,9 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour {
     public int ID;
     public Item Item;
+
     public KeyCode SlotInput;
+
     public Sprite nonActiveSprite;
     public Sprite ActiveSprite;
 
@@ -25,6 +27,12 @@ public class InventorySlot : MonoBehaviour {
     }
 
     public void UpdateSlot() {
+        if (Item == null) {
+            ItemQuantityText.text = "0";
+
+            return;
+        }
+
         ItemImage.sprite = Item.Sprite;
         ItemQuantityText.text = Item.Quantity.ToString();
     }

@@ -21,24 +21,21 @@ public class PlayerMovement : MonoBehaviour
         Rotate();
     }
 
+
     private void Move() {
-        float inputH = Input.GetAxisRaw("Horizontal");
-        float inputV = Input.GetAxisRaw("Vertical");
+        float inputH = Input.GetAxis("Horizontal");
+        float inputV = Input.GetAxis("Vertical");
 
-        movement = new Vector2(inputH, inputV).normalized;
+        Vector3 movement = new Vector3(inputH, inputV, 0f) * speed * Time.deltaTime;
 
-        /*
+        transform.position += movement;
+
         if (inputH != 0 || inputV != 0) {
             playerAnimations.SetPlayerRun(true);
-        } else {
+        }
+        else {
             playerAnimations.SetPlayerRun(false);
         }
-        */
-    }
-
-    private void FixedUpdate() {
-        //rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
     }
 
     private void Rotate() {
