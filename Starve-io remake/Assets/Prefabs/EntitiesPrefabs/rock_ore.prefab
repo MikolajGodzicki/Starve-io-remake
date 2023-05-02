@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4843857204930487287}
   m_Layer: 0
   m_Name: rock_ore
-  m_TagString: Untagged
+  m_TagString: GatherableEntity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  ItemQuantityMin: 2
+  ItemQuantityMax: 4

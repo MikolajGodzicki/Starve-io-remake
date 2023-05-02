@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
+    public static PlayerAnimations Instance;
+
+    [SerializeField]
     private Animator animator;
 
-    private void Start() {
-        animator = GetComponent<Animator>();
+    public void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
     }
 
     public void SetPlayerRun(bool value) {
         animator.SetBool("IsRunning", value);
-    }   
+    }
+
+    public void SetPlayerAttack(bool value) {
+        animator.SetBool("IsAttacking", value);
+    }
 }

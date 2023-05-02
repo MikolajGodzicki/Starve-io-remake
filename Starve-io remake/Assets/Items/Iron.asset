@@ -18,4 +18,6 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 0a58483f5b648dc40a7fed4758690c47, type: 3}
   ItemType: 0
   ToolSubType: 0
-  Quantity: 1
+  Quantity: 0
+  ItemValueMin: 1
+  ItemValueMax: 3

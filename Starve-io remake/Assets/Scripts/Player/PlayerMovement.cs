@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerAnimations playerAnimations;
-    private Rigidbody2D rb;
-
-    private Vector2 movement;
-
     public float speed = 5;
-
-    private void Start() {
-        playerAnimations = GetComponent<PlayerAnimations>();
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     private void Update() {
         Move();
@@ -31,10 +21,10 @@ public class PlayerMovement : MonoBehaviour
         transform.position += movement;
 
         if (inputH != 0 || inputV != 0) {
-            playerAnimations.SetPlayerRun(true);
+            PlayerAnimations.Instance.SetPlayerRun(true);
         }
         else {
-            playerAnimations.SetPlayerRun(false);
+            PlayerAnimations.Instance.SetPlayerRun(false);
         }
     }
 

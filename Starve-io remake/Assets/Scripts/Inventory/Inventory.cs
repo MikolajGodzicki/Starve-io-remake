@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance;
+
     private InventorySlot[] InventorySlots;
 
     [Header("Slots Configuration")]
@@ -53,10 +56,15 @@ public class Inventory : MonoBehaviour
 
     KeyCode[] inventoryKeys;
 
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+    }
+
     private void Start() {
         InitSlotKeys();
         InitSlots();
-
     }
 
     private void InitSlotKeys() {
@@ -117,8 +125,26 @@ public class Inventory : MonoBehaviour
                 SelectedSlotIndex = slot.ID;
                 InventorySlots[SelectedSlotIndex].SetActivity(true);
             }
+        }
+    }
 
-            slot.UpdateSlot();
+    public void AddItemToInventory(Item item, int itemQuantity) {
+        foreach (InventorySlot slot in InventorySlots) {
+            if (slot.IsEmpty) {
+                slot.Item = item.Copy();
+                slot.Item.Quantity = itemQuantity;
+                slot.IsEmpty = false;
+
+                slot.UpdateSlot();
+                break;
+            }
+
+            if (slot.Item.ID == item.ID) {
+                slot.Item.Quantity += itemQuantity;
+
+                slot.UpdateSlot();
+                break;
+            }
         }
     }
 }
