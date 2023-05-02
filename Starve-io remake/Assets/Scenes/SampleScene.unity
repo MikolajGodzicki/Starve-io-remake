@@ -485,23 +485,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DampTime: 0.15
   Target: {fileID: 1021527351}
---- !u!1 &641013345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 52464496721909402, guid: b8f1d7d81bcc9794d8b62cd0d8831cd1, type: 3}
-  m_PrefabInstance: {fileID: 653959824}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &641013351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641013345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bc7420902a94ef4bbd216e03bff28d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &642542909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,33 +1253,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 52464496721909401, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
-      propertyPath: speed
-      value: 7.5
-      objectReference: {fileID: 0}
     - target: {fileID: 52464496721909402, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 245026138099119149, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
-      propertyPath: slotPrefab
-      value: 
-      objectReference: {fileID: 2923565505992333269, guid: 86bc0e39984638d44bc645dd0867bd6c, type: 3}
-    - target: {fileID: 245026138099119149, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
       propertyPath: inventoryContainer
       value: 
       objectReference: {fileID: 265132951}
-    - target: {fileID: 1396409561511586161, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396409561511586161, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396409561511586161, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}

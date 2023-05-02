@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ore : MonoBehaviour, IGatherable {
+public class GatherableEntity : MonoBehaviour, IGatherable {
     [SerializeField]
-    private OreType type;
+    private GatherableEntityType type;
 
     public Item Gather() {
         Item item = new Item();

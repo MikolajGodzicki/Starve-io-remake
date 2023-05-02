@@ -47,7 +47,8 @@ public enum ItemToolSubType {
     Shovel
 }
 
-public enum OreType {
+public enum GatherableEntityType {
+    Wood,
     Rock,
     Iron,
     Gold

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8634856276077807872}
   - component: {fileID: 8634856276077807873}
   - component: {fileID: 1158160218968906851}
+  - component: {fileID: -4843857204930487287}
   m_Layer: 0
   m_Name: rock_ore
   m_TagString: Untagged
@@ -111,3 +112,16 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &-4843857204930487287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8634856276077807874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3767293a3f16094493d092b767d7471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
