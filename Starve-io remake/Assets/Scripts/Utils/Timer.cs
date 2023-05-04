@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
 
     private bool isRunning = false;
 
-    public Action TimerTick;
+    public Action OnTimerTick;
 
     public void TimerToggle(bool value) {
         isRunning = value;
@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
             return;
         }
 
-        TimerTick.Invoke();
+        OnTimerTick?.Invoke();
         currentTime = 0f;
     }
 }

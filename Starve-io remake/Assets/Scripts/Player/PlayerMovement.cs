@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
         Rotate();
     }
 
-
     private void Move() {
         float inputH = Input.GetAxis("Horizontal");
         float inputV = Input.GetAxis("Vertical");

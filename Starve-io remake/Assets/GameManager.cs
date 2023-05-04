@@ -6,13 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public int TickTime;
 
-    Timer timer;
+    static Timer timer;
 
     private void Start() {
         timer = gameObject.AddComponent<Timer>();
+        timer.tickTime = TickTime;
+        timer.TimerToggle(true);
     }
 
-    public void AddTickAction(Action action) {
-        timer.TimerTick += action;
+    public static void AddTickAction(Action action) {
+        timer.OnTimerTick += action;
     }
 }

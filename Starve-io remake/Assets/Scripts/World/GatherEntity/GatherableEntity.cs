@@ -11,6 +11,11 @@ public class GatherableEntity : MonoBehaviour {
     private int ItemQuantityMax;
 
     public int GetRandomQuantity() => Random.Range(ItemQuantityMin, ItemQuantityMax);
+
+    public void Shake() {
+        Animator animator = GetComponent<Animator>();
+        animator.Play("Shake", 0, 0.0f);
+    }
 }
 
 

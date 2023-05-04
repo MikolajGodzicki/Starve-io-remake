@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ZombieAI : MonoBehaviour
 {
-    private float radius = 5f;
+    private float followRadius = 5f;
+    private float attackRadius = .5f;
     private float speed = 4f;
 
     void Update()
@@ -14,7 +15,7 @@ public class ZombieAI : MonoBehaviour
     }
 
     private void Follow() {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, radius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, followRadius);
 
         foreach (Collider2D collider in colliders) {
             if (collider.name == "Player") {
@@ -22,6 +23,12 @@ public class ZombieAI : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, collider.transform.position, speed * Time.deltaTime);
 
                 Rotate(playerPos);
+
+                ZombieAnimations.Instance.SetZombieRun(true);
+            }
+            else 
+            {
+                ZombieAnimations.Instance.SetZombieRun(false);
             }
         }
     }

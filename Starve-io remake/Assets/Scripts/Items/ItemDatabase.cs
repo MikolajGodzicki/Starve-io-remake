@@ -23,7 +23,6 @@ public class ItemDatabase : MonoBehaviour
     public Item GetItemByGatherType(GatherableEntityType type) {
         return itemPairs.First(e => e.type == type).item;
     }
-    
 }
 
 [Serializable]

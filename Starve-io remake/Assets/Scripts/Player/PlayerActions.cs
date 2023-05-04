@@ -30,7 +30,7 @@ public class PlayerActions : MonoBehaviour
 
     public void Gather(GameObject gameObject) {
         GatherableEntity gatherableEntity = gameObject.GetComponent<GatherableEntity>();
-        //gatherableEntity.Shake();
+        gatherableEntity.Shake();
 
         GatherableEntityType gatherableEntityType = gatherableEntity.type;
         int itemQuantity = gatherableEntity.GetRandomQuantity();
@@ -41,7 +41,8 @@ public class PlayerActions : MonoBehaviour
     }
 
     public void Attack(GameObject gameObject) {
-        Debug.Log($"Attacking {gameObject.name}");
+        Mob mob = gameObject.GetComponent<Mob>();
+        mob.DealDamage(11);
     }
 
     private void SetCollidingAndAnimation(bool value) {
