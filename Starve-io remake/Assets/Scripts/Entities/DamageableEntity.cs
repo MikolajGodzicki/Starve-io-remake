@@ -4,10 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Mob : MonoBehaviour
+public class DamageableEntity : MonoBehaviour, IDamageable
 {
-    private const int maxHealth = 100;
-    private int health;
+    public const int maxHealth = 100;
+    public int health;
 
     [SerializeField]
     private Image healthBar;

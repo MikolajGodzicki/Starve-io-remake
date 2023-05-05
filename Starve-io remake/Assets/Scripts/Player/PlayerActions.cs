@@ -1,52 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class PlayerActions : MonoBehaviour
-{
-    public GameObject ActionColliderObj;
+public class PlayerActions : AttackableEntity {
+    float TimerForNextAttack, Cooldown;
 
-    private float currentTime;
-    private float attackInterval = 1f;
+    private void Start() {
+        Cooldown = 1;
+        TimerForNextAttack = Cooldown;
+    }
 
     void Update() {
-        if (Input.GetKeyUp(KeyCode.E) ||
-            Input.GetMouseButtonUp(0)) {
-            SetCollidingAndAnimation(false);
-        }
+        if (TimerForNextAttack > 0) {
+            TimerForNextAttack -= Time.deltaTime;
+        } else if (TimerForNextAttack <= 0) {
+            if (Input.GetMouseButtonDown(0)) {
+                PlayAttackAnimation();
 
-        if (currentTime < attackInterval) {
-            currentTime += Time.time;
-            return;
-        }
+                IEnumerable<GameObject> gameObjects = GetCollidedGameObjects();
+                Attack(gameObjects.Where(e => e.gameObject.tag == "AttackableEntity"), 15);
+                Gather(gameObjects.Where(e => e.gameObject.tag == "GatherableEntity"));
 
-        if (Input.GetKey(KeyCode.E) ||
-            Input.GetMouseButton(0)) {
-            SetCollidingAndAnimation(true);
-        }
-
-        currentTime = 0;
+                TimerForNextAttack = Cooldown;
+            }
+        }   
     }
 
-    public void Gather(GameObject gameObject) {
-        GatherableEntity gatherableEntity = gameObject.GetComponent<GatherableEntity>();
-        gatherableEntity.Shake();
+    public void Gather(IEnumerable<GameObject> gameObjects) {
+        foreach (GameObject gameObject in gameObjects) {
+            GatherableEntity gatherableEntity = gameObject.GetComponent<GatherableEntity>();
+            gatherableEntity.Shake();
 
-        GatherableEntityType gatherableEntityType = gatherableEntity.type;
-        int itemQuantity = gatherableEntity.GetRandomQuantity();
+            GatherableEntityType gatherableEntityType = gatherableEntity.type;
+            int itemQuantity = gatherableEntity.GetRandomQuantity();
 
-        Item item = ItemDatabase.Instance.GetItemByGatherType(gatherableEntityType);
+            Item item = ItemDatabase.Instance.GetItemByGatherType(gatherableEntityType);
 
-        Inventory.Instance.AddItemToInventory(item, itemQuantity);
-    }
-
-    public void Attack(GameObject gameObject) {
-        Mob mob = gameObject.GetComponent<Mob>();
-        mob.DealDamage(11);
-    }
-
-    private void SetCollidingAndAnimation(bool value) {
-        ActionColliderObj.SetActive(value);
-        PlayerAnimations.Instance.SetPlayerAttack(value);
+            Inventory.Instance.AddItemToInventory(item, itemQuantity);
+        }
     }
 }

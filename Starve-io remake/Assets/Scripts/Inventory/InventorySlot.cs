@@ -10,25 +10,25 @@ public class InventorySlot : MonoBehaviour {
     public int ID;
     public Item Item;
 
-    public KeyCode SlotInput;
+    public KeyCode slotInput;
 
-    public Sprite nonActiveSprite;
-    public Sprite ActiveSprite;
+    public Sprite unselectedSlotSprite;
+    public Sprite selectedSlotSprite;
 
     public Image ItemImage;
     public TextMeshProUGUI ItemQuantityText;
 
-    public bool IsActive = false;
-    public bool IsEmpty = true;
+    public bool isActive = false;
+    public bool isEmpty = true;
 
     private void Start() {
         UpdateSlot();
     }
 
     public void SetActivity(bool isActive) {
-        IsActive = isActive;
+        this.isActive = isActive;
 
-        GetComponent<Image>().sprite = IsActive ? ActiveSprite : nonActiveSprite;
+        GetComponent<Image>().sprite = this.isActive ? selectedSlotSprite : unselectedSlotSprite;
     }
 
     public void UpdateSlot() {

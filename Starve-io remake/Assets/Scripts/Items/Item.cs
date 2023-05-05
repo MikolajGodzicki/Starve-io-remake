@@ -72,10 +72,3 @@ public enum ItemToolSubType {
     Axe,
     Shovel
 }
-
-public enum GatherableEntityType {
-    Wood,
-    Rock,
-    Iron,
-    Gold
-}

@@ -4,11 +4,10 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
-{
+public class Inventory : MonoBehaviour {
     public static Inventory Instance;
 
-    private InventorySlot[] InventorySlots;
+    private InventorySlot[] inventorySlots;
 
     [Header("Slots Configuration")]
     [SerializeField]
@@ -92,7 +91,7 @@ public class Inventory : MonoBehaviour
 
     private void InitSlots() {
         InventorySlotCount = 9;
-        InventorySlots = new InventorySlot[InventorySlotCount];
+        inventorySlots = new InventorySlot[InventorySlotCount];
 
         for (int i = 0; i < InventorySlotCount; i++) {
             GameObject gameObject = Instantiate(slotPrefab);
@@ -105,35 +104,35 @@ public class Inventory : MonoBehaviour
             gameObject.transform.position = new Vector3(45f + 90f * i, -78f, 0);
 
             InventorySlot slot = gameObject.GetComponent<InventorySlot>();
-            slot.SlotInput = inventoryKeys[i];
+            slot.slotInput = inventoryKeys[i];
             slot.ID = i;
 
-            InventorySlots[i] = slot;
+            inventorySlots[i] = slot;
         }
 
-        foreach (InventorySlot slot in InventorySlots) {
-            slot.GetComponentInChildren<TextMeshProUGUI>().text = slot.SlotInput.ToString().Replace("Alpha", "");
+        foreach (InventorySlot slot in inventorySlots) {
+            slot.GetComponentInChildren<TextMeshProUGUI>().text = slot.slotInput.ToString().Replace("Alpha", "");
         }
 
-        InventorySlots[SelectedSlotIndex].SetActivity(true);
+        inventorySlots[SelectedSlotIndex].SetActivity(true);
     }
 
     public void Update() {
-        foreach (InventorySlot slot in InventorySlots) {
-            if (Input.GetKey(slot.SlotInput)) {
-                InventorySlots[SelectedSlotIndex].SetActivity(false);
+        foreach (InventorySlot slot in inventorySlots) {
+            if (Input.GetKey(slot.slotInput)) {
+                inventorySlots[SelectedSlotIndex].SetActivity(false);
                 SelectedSlotIndex = slot.ID;
-                InventorySlots[SelectedSlotIndex].SetActivity(true);
+                inventorySlots[SelectedSlotIndex].SetActivity(true);
             }
         }
     }
 
     public void AddItemToInventory(Item item, int itemQuantity) {
-        foreach (InventorySlot slot in InventorySlots) {
-            if (slot.IsEmpty) {
+        foreach (InventorySlot slot in inventorySlots) {
+            if (slot.isEmpty) {
                 slot.Item = item.Copy();
                 slot.Item.Quantity = itemQuantity;
-                slot.IsEmpty = false;
+                slot.isEmpty = false;
 
                 slot.UpdateSlot();
                 break;

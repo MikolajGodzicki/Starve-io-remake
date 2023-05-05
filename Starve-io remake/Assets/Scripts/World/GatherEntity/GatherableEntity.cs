@@ -18,4 +18,9 @@ public class GatherableEntity : MonoBehaviour {
     }
 }
 
-
+public enum GatherableEntityType {
+    Wood,
+    Rock,
+    Iron,
+    Gold
+}

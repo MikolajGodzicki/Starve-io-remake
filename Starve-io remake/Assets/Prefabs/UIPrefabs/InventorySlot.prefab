@@ -170,13 +170,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   Item: {fileID: 0}
-  SlotInput: 0
-  nonActiveSprite: {fileID: 21300000, guid: 241191ee606bd374b9b3ac8dad5f3b96, type: 3}
-  ActiveSprite: {fileID: 21300000, guid: b212d3281be2c0e4f87ac09da47860b0, type: 3}
+  slotInput: 0
+  unselectedSlotSprite: {fileID: 21300000, guid: 241191ee606bd374b9b3ac8dad5f3b96, type: 3}
+  selectedSlotSprite: {fileID: 21300000, guid: b212d3281be2c0e4f87ac09da47860b0, type: 3}
   ItemImage: {fileID: 4734870149140193345}
   ItemQuantityText: {fileID: 4606197035138119978}
-  IsActive: 0
-  IsEmpty: 1
+  isActive: 0
+  isEmpty: 1
 --- !u!1 &2923565506246596923
 GameObject:
   m_ObjectHideFlags: 0

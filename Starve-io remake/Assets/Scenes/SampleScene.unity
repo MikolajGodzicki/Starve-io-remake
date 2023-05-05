@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DampTime: 0.15
-  Target: {fileID: 1021527351}
+  targetTransform: {fileID: 1021527351}
 --- !u!4 &566152502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8410824137028846591, guid: c04e4dca55d0ae945b6484d2bf42850d, type: 3}
@@ -534,7 +534,6 @@ GameObject:
   m_Component:
   - component: {fileID: 704519240}
   - component: {fileID: 704519239}
-  - component: {fileID: 704519241}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -609,24 +608,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &704519241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704519238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e84c041d7cdb57842b3c8aa3878f2765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rockPrefab: {fileID: 8634856276077807874, guid: 286e9f459d92ac74db22f18c87bf3ae3, type: 3}
-  treePrefab:
-  - {fileID: 947073963616276842, guid: feb85970e0ce0984da68aaf6b3b652ce, type: 3}
-  - {fileID: 9125887897195683980, guid: d978eebe28c223749913ce611c2190ee, type: 3}
-  ironPrefab: {fileID: 8634856276077807874, guid: 0c50db2ab5428884abb2d46bb2c630ce, type: 3}
-  goldPrefab: {fileID: 8634856276077807874, guid: 8981626c8746a494b8b02e37a8193006, type: 3}
 --- !u!1 &887166304
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,14 +959,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 52464496721909401, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
+      propertyPath: movementSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 52464496721909402, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 52464496721909402, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 245026138099119149, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
       propertyPath: inventoryContainer
       value: 
       objectReference: {fileID: 265132951}
+    - target: {fileID: 2185506940235609857, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 942e69ef00aa53e42adbcd73148515fc, type: 3}
 --- !u!1001 &2822285688869876364

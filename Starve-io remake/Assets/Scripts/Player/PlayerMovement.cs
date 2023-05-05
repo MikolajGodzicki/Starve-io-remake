@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5;
+    [HideInInspector]
+    public float movementSpeed = 10;
 
     private void Update() {
         Move();
@@ -12,18 +13,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Move() {
-        float inputH = Input.GetAxis("Horizontal");
-        float inputV = Input.GetAxis("Vertical");
+        float inputHorizontal = Input.GetAxis("Horizontal");
+        float inputVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(inputH, inputV, 0f) * speed * Time.deltaTime;
+        Vector3 movement = new Vector3(inputHorizontal, inputVertical, 0f) * movementSpeed * Time.deltaTime;
 
         transform.position += movement;
 
-        if (inputH != 0 || inputV != 0) {
-            PlayerAnimations.Instance.SetPlayerRun(true);
+        if (inputHorizontal != 0 || inputVertical != 0) {
+            GetComponent<InteractableAnimationEntity>().SetRun(true);
         }
         else {
-            PlayerAnimations.Instance.SetPlayerRun(false);
+            GetComponent<InteractableAnimationEntity>().SetRun(false);
         }
     }
 
@@ -31,8 +32,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        Vector2 position = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+        Vector2 finalPosition = new Vector2(mousePos.x - transform.position.x,  
+                                            mousePos.y - transform.position.y);
 
-        transform.up = position;
+        transform.up = finalPosition;
     }
 }
