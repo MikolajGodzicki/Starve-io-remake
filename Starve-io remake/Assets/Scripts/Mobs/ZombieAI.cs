@@ -23,14 +23,18 @@ public class ZombieAI : AttackableEntity {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, followRadius);
         Move(colliders.FirstOrDefault(e => e.name == "Player"));
 
-
         if (TimerForNextAttack > 0) {
             TimerForNextAttack -= Time.deltaTime;
         }
         else if (TimerForNextAttack <= 0) {
             IEnumerable<GameObject> gameObjects = GetCollidedGameObjects();
-            if (gameObjects.Where(e => e.gameObject.tag == "Player").ToArray().Length > 0) {
-                Attack(gameObjects.Where(e => e.gameObject.tag == "Player"), 15);
+            IEnumerable<GameObject> playerGameObjects = gameObjects.Where(e => e.gameObject.tag == "Player");
+            if (playerGameObjects.ToArray().Length > 0) {
+                Attack(playerGameObjects, 15);
+                playerGameObjects.ToList()
+                                 .ForEach(e => e.gameObject
+                                                .GetComponent<AttackableEntity>()
+                                                .PlayDamagedAnimation());
                 PlayAttackAnimation();
             }
 

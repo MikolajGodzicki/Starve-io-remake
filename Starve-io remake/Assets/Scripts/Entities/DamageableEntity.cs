@@ -18,16 +18,19 @@ public class DamageableEntity : MonoBehaviour, IDamageable
     }
 
     public void UpdateHealthBar() {
+        if (healthBar !=  null) {
+            healthBar.fillAmount = (float)health / maxHealth;
+        }
+    }
+
+    public void DealDamage(int amount) {
+        health -= amount;
+
         if (health <= 0) {
             Die();
             return;
         }
 
-        healthBar.fillAmount = (float) health / maxHealth; 
-    }
-
-    public void DealDamage(int amount) {
-        health -= amount;
         UpdateHealthBar();
     }
 

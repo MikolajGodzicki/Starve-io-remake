@@ -23,6 +23,10 @@ public class AttackableEntity : MonoBehaviour
     }
 
     public void PlayAttackAnimation() {
-        GetComponent<InteractableAnimationEntity>().PlayAttackAnimationOnce();
+        GetComponent<InteractableAnimationEntity>().PlayActionAnimationOnce();
+    }
+
+    public void PlayDamagedAnimation() {
+        GetComponent<InteractableAnimationEntity>().PlayDamagedAnimationOnce();
     }
 }

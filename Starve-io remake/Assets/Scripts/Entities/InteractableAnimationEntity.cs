@@ -19,7 +19,11 @@ public class InteractableAnimationEntity: MonoBehaviour
         animator.SetBool("IsAttacking", value);
     }
 
-    public void PlayAttackAnimationOnce() {
-        animator.Play("attack", -1, 0f);
+    public void PlayActionAnimationOnce() {
+        animator.Play("action");
+    }
+
+    public void PlayDamagedAnimationOnce() {
+        animator.Play("damaged");
     }
 }

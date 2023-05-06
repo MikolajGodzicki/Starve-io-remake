@@ -7,7 +7,7 @@ public class PlayerActions : AttackableEntity {
     float TimerForNextAttack, Cooldown;
 
     private void Start() {
-        Cooldown = 1;
+        Cooldown = 0.4f;
         TimerForNextAttack = Cooldown;
     }
 
@@ -20,6 +20,11 @@ public class PlayerActions : AttackableEntity {
 
                 IEnumerable<GameObject> gameObjects = GetCollidedGameObjects();
                 Attack(gameObjects.Where(e => e.gameObject.tag == "AttackableEntity"), 15);
+                gameObjects.Where(e => e.gameObject.tag == "AttackableEntity")
+                                    .ToList()
+                                    .ForEach(e => e.gameObject
+                                                   .GetComponent<AttackableEntity>()
+                                                   .PlayDamagedAnimation());
                 Gather(gameObjects.Where(e => e.gameObject.tag == "GatherableEntity"));
 
                 TimerForNextAttack = Cooldown;

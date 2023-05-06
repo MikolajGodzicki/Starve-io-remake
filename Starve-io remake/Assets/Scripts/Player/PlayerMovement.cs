@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [HideInInspector]
-    public float movementSpeed = 10;
+    private float movementSpeed;
+
+    private void Start() {
+         movementSpeed = 7.5f;
+    }
 
     private void Update() {
         Move();
