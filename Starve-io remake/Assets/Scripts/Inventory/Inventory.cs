@@ -127,6 +127,7 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+
     public void AddItemToInventory(Item item, int itemQuantity) {
         foreach (InventorySlot slot in inventorySlots) {
             if (slot.isEmpty) {

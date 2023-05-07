@@ -21,13 +21,14 @@ public class PlayerActions : AttackableEntity {
                 IEnumerable<GameObject> gameObjects = GetCollidedGameObjects();
                 Attack(gameObjects.Where(e => e.gameObject.tag == "AttackableEntity"), 15);
                 gameObjects.Where(e => e.gameObject.tag == "AttackableEntity")
-                                    .ToList()
+                                    .ToList()                                   
                                     .ForEach(e => e.gameObject
                                                    .GetComponent<AttackableEntity>()
                                                    .PlayDamagedAnimation());
                 Gather(gameObjects.Where(e => e.gameObject.tag == "GatherableEntity"));
 
                 TimerForNextAttack = Cooldown;
+
             }
         }   
     }
@@ -35,6 +36,13 @@ public class PlayerActions : AttackableEntity {
     public void Gather(IEnumerable<GameObject> gameObjects) {
         foreach (GameObject gameObject in gameObjects) {
             GatherableEntity gatherableEntity = gameObject.GetComponent<GatherableEntity>();
+
+            if (gatherableEntity.Durability == 0) {
+                TextPopUps.Instance.PopUpText("Can't gather resources!\nWait for renew.");
+                return;
+            }
+
+            gatherableEntity.Durability--;
             gatherableEntity.Shake();
 
             GatherableEntityType gatherableEntityType = gatherableEntity.type;

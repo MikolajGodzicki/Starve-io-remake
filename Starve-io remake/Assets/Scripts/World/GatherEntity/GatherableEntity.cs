@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GatherableEntity : MonoBehaviour {
@@ -10,7 +11,33 @@ public class GatherableEntity : MonoBehaviour {
     [SerializeField]
     private int ItemQuantityMax;
 
+    private const int maxDurability = 10;
+    public int Durability;
+
     public int GetRandomQuantity() => Random.Range(ItemQuantityMin, ItemQuantityMax);
+
+    float TimerForNextDurabilityRegen, Cooldown;
+
+    private void Start() {
+        Cooldown = 10f;
+        TimerForNextDurabilityRegen = Cooldown;
+
+        Durability = 10;
+    }
+
+    void Update() {
+        if (Durability > 0) {
+            return;
+        }
+
+        if (TimerForNextDurabilityRegen > 0) {
+            TimerForNextDurabilityRegen -= Time.deltaTime;
+        }
+        else if (TimerForNextDurabilityRegen <= 0) {
+            Durability = 10;
+            TimerForNextDurabilityRegen = 0;
+        }
+    }
 
     public void Shake() {
         Animator animator = GetComponent<Animator>();
