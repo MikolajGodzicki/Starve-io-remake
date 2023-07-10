@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int TickTime;
-
     static Timer timer;
 
-    private void Start() {
-        timer = gameObject.AddComponent<Timer>();
-        timer.tickTime = TickTime;
+    public static GameManager Instance { get; private set; }
+
+    private void Awake() {
+        if (Instance != null && Instance != this) {
+            Destroy(this);
+        }
+        else {
+            Instance = this;
+        }
+
+        timer = gameObject.GetComponent<Timer>();
         timer.TimerToggle(true);
     }
 
-    public static void AddTickAction(Action action) {
+    public void AddTickAction(Action action) {
         timer.OnTimerTick += action;
     }
 }

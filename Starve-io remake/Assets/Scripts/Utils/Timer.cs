@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    private float currentTime;
+    private float currentTime = 0f;
 
-    public float tickTime;
+    public float tickTime = 5f;
 
     private bool isRunning = false;
 
@@ -24,9 +24,11 @@ public class Timer : MonoBehaviour
         }
 
         if (currentTime < tickTime) {
-            currentTime += Time.time;
+            currentTime += Time.deltaTime;
             return;
         }
+
+        Debug.Log(currentTime);
 
         OnTimerTick?.Invoke();
         currentTime = 0f;

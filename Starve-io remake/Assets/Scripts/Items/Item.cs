@@ -16,7 +16,7 @@ public class Item : ScriptableObject
     public string Description;
     public Sprite Sprite;
     public ItemType ItemType;
-    public ItemToolSubType ToolSubType;
+    public ItemToolSubType? ToolSubType;
     public int Quantity;
 
     public Item () { }
@@ -27,7 +27,7 @@ public class Item : ScriptableObject
         string description,
         Sprite sprite,
         ItemType itemType,
-        ItemToolSubType toolSubType) {
+        ItemToolSubType? toolSubType = null) {
 
         this.ID = id;
         this.Name = name;

@@ -22,7 +22,7 @@ public class GatherableEntity : MonoBehaviour {
         Cooldown = 10f;
         TimerForNextDurabilityRegen = Cooldown;
 
-        Durability = 10;
+        Durability = maxDurability;
     }
 
     void Update() {
@@ -34,7 +34,7 @@ public class GatherableEntity : MonoBehaviour {
             TimerForNextDurabilityRegen -= Time.deltaTime;
         }
         else if (TimerForNextDurabilityRegen <= 0) {
-            Durability = 10;
+            Durability = maxDurability;
             TimerForNextDurabilityRegen = 0;
         }
     }

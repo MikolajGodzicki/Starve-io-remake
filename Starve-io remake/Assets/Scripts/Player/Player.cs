@@ -20,6 +20,15 @@ public class Player : DamageableEntity
     [SerializeField]
     private Image temperatureBar;
 
+    public void Start() {
+        GameManager.Instance.AddTickAction(Starve);
+
+        health = maxHealth;
+        starve = maxStarve;
+        thirst = maxThirst;
+        temperature = maxTemperature;
+    }
+
     public void UpdateBars() {
         if (starveBar != null) {
             starveBar.fillAmount = (float)starve / maxStarve;
@@ -36,5 +45,9 @@ public class Player : DamageableEntity
 
     public void Update() {
         UpdateBars();
+    }
+
+    private void Starve() {
+        starve--;
     }
 }
